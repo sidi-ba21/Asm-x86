@@ -1,8 +1,8 @@
 BITS 64
 section .text
-    GLOBAL my_strlen
+    GLOBAL strlen
 
-my_strlen:  
+strlen:  
     push rbp
     mov rbp, rsp    ; setup the stack frame
 
