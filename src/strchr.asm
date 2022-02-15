@@ -8,21 +8,21 @@ strchr:
 
 loop_on_str:
         cmp byte [rdi], 0  ; test end of string
-        je no_found     ; go to end
+        je return_null     ; go to end
 
         cmp byte [rdi], sil ; check if current character is equal to character given in parameter
-        je found_end   ; go to end
+        je return_pos_address   ; go to end
 
         inc rdi         ; move to next character of the string
         jmp loop_on_str         ; loop
 
-found_end:
+return_pos_address:
         mov rax, rdi            ; set function return
         mov rsp, rbp
         pop rbp
         ret
 
-no_found:
+return_null:
         mov rax, 0
         mov rsp, rbp
         pop rbp
