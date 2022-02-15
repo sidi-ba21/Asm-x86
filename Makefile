@@ -6,6 +6,8 @@
 ##
 
 SRC			=		src/strlen.asm				\
+					src/strchr.asm				\
+					src/strrchr.asm				\
 
 
 OBJ			=		$(SRC:.asm=.o)
