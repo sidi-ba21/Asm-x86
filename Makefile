@@ -9,7 +9,6 @@ SRC			=		src/strlen.asm				\
 					src/strchr.asm				\
 					src/strrchr.asm				\
 					src/memcpy.asm				\
-					src/memmove.asm				\
 					src/memset.asm				\
 					src/strcasecmp.asm			\
 					src/strcmp.asm				\

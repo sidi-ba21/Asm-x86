@@ -8,28 +8,44 @@ strncmp:
     push rbp
     mov rbp, rsp
     xor rcx, rcx
+    cmp rdx, 0
+    je equal
+    cmp rdi, 0
+    je if_null1
+    cmp rsi, 0
+    je if_null2
 
 loop_on_str:
     cmp rcx, rdx
     je equal
-    mov byte cl, [rdi + rcx]
-    mov byte ch, [rsi + rcx]
+    mov byte al, [rdi + rcx]
+    mov byte ah, [rsi + rcx]
     inc rcx                     ; move to next character of the string
-    cmp  cl, ch       ; check if current characters are equal
+    cmp  al, ah       ; check if current characters are equal
     je loop_on_str             ; loop if ZF = 1
-    jl greater_end
-    jg less_end
+    jmp diff
 
 equal:
     xor rax, rax
     jmp end
 
-greater_end:
-    mov rax, 1
+diff:
+    sub al, ah
+    movsx rax, al
     jmp end
 
-less_end:
-    mov rax, -1
+if_null1:
+    cmp rsi, 0
+    je return_null
+
+if_null2:
+    cmp rdi, 0
+    je return_null
+    
+
+return_null:
+    xor rax, rax
+    jmp end
 
 end:
     mov rsp, rbp

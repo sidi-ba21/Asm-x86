@@ -2,18 +2,20 @@ BITS 64
 section .text
     GLOBAL strchr
 
-# char* strchr(const char *str, int c);
+; char* strchr(const char *str, int c);
 
 strchr:
     push rbp
     mov rbp, rsp
+    cmp rdi, 0
+    je return_null
 
 loop_on_str:
-    cmp byte [rdi], 0  ; test end of string
-    je return_null     ; go to end
-
     cmp byte [rdi], sil ; check if current character is equal to character given in parameter
     je return_pos_address   ; go to end
+
+    cmp byte [rdi], 0  ; test end of string
+    je return_null     ; go to end
 
     inc rdi         ; move to next character of the string
     jmp loop_on_str         ; loop

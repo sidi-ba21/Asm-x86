@@ -2,7 +2,7 @@ BITS 64
 section .text
     GLOBAL memset
 
-;# void *memset(void *s, int c, size_t n);
+; void *memset(void *s, int c, size_t n);
 
 memset:
     push rbp

@@ -1,6 +1,6 @@
 BITS 64
 section .text
-    GLOBAL strstr
+    GLOBAL my_strstr
 
 
 

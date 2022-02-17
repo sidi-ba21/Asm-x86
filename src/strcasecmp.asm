@@ -8,6 +8,10 @@ strcasecmp:
     push rbp
     mov rbp, rsp
     xor rcx, rcx
+    cmp rdi, 0
+    je if_null1
+    cmp rsi, 0
+    je if_null2
 
 init_chr:
     mov r8b, byte [rdi + rcx]
@@ -46,6 +50,18 @@ set_return:
     movsx rax, al
     jmp end
 
+if_null1:
+    cmp rsi, 0
+    je return_null
+
+if_null2:
+    cmp rdi, 0
+    je return_null
+    
+
+return_null:
+    xor rax, rax
+    jmp end
 end:
     mov rsp, rbp
     pop rbp
