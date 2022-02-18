@@ -13,16 +13,42 @@ SRC			=		src/strlen.asm				\
 					src/strcasecmp.asm			\
 					src/strcmp.asm				\
 					src/strncmp.asm				\
+					src/memmove.asm				\
+					src/strstr.asm				\
+					src/strpbrk.asm				\
+					src/strcspn.asm				\
+					src/strspn.asm				\
+					src/strcpy.asm				\
+					src/index.asm				\
+					src/rindex.asm				\
+					src/read.asm				\
+					src/write.asm				\
+
+#SRC-CRIT	=	$(wildcard $(addprefix tests/, *).c)
+
+#OBJ-CRIT	=       $(SRC-CRIT:.c=.o)
 
 OBJ			=		$(SRC:.asm=.o)
+
+CRITFLAGS	=	-lcriterion --coverage
+
+CFLAGS		+=	-I ./include -fno-builtin
+
+CPPFLAGS	+=	-Wall -Wextra -fPIC
 
 NAME		=		libasm.so
 
 %.o: %.asm
 		nasm -f elf64 $<
 
+#%.o: %.c
+#	gcc $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
+
 all: $(OBJ)
 		ld -fPIC -shared $(OBJ) -o $(NAME)
+
+#test_run:	all $(OBJ-CRIT)
+#	gcc $(CFLAGS) $(CRITFLAGS) $(OBJ-CRIT) -ldl
 
 clean:
 		rm -f $(OBJ)
