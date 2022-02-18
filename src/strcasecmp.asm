@@ -2,7 +2,7 @@ BITS 64
 section .text
     GLOBAL strcasecmp
 
-; int strcasecmp(const char *s1, const char *s2);
+;   int strcasecmp(const char *s1, const char *s2);
 
 strcasecmp:
     push rbp
@@ -62,6 +62,7 @@ if_null2:
 return_null:
     xor rax, rax
     jmp end
+
 end:
     mov rsp, rbp
     pop rbp

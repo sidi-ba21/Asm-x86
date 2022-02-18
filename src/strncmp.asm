@@ -2,7 +2,7 @@ BITS 64
 section .text
     GLOBAL strncmp
 
-; int strncmp(const char *s1, const char *s2, size_t n);
+;   int strncmp(const char *s1, const char *s2, size_t n);
 
 strncmp:
     push rbp

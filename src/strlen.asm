@@ -2,7 +2,7 @@ BITS 64
 section .text
     GLOBAL strlen
 
-; int strlen(char *str)
+;   int strlen(char *str)
 
 strlen:  
     push rbp

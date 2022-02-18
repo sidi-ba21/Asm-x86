@@ -2,7 +2,7 @@ BITS 64
 section .text
     GLOBAL strchr
 
-; char* strchr(const char *str, int c);
+;   char* strchr(const char *str, int c);
 
 strchr:
     push rbp
