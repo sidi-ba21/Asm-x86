@@ -1,10 +1,10 @@
 BITS 64
 section .text
-    GLOBAL my_strpbrk
+    GLOBAL strpbrk
 
 ;   char *strpbrk(const char *s, const char *accept);
 
-my_strpbrk:
+strpbrk:
 	push rbp
 	mov rbp, rsp
 	mov rdx, rdi

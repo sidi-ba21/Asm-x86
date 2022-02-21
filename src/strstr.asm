@@ -1,6 +1,6 @@
 BITS 64
 section .text
-    GLOBAL my_strstr
+    GLOBAL strstr
 
 ;   char *strstr(const char *haystack, const char *needle);
 
