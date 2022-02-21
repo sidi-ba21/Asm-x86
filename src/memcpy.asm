@@ -8,14 +8,17 @@ memcpy:
     push rbp
     mov rbp, rsp
     mov rax, rdi
-    dec rdx
+    mov rcx, rdx
+    cmp rdx, 0
+    je return_dest
+    dec rcx
 
 loop:
-    cmp rdx, 0
+    cmp rcx, 0
     jl return_dest
-    mov r8b, byte [rsi + rdx] ; copy byte src into dest
-    mov byte [rdi + rdx], r8b; 
-    dec rdx
+    mov r8b, byte [rsi + rcx] ; copy byte src into dest
+    mov byte [rdi + rcx], r8b; 
+    dec rcx
     jmp loop
 
 return_dest:
