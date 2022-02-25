@@ -14,6 +14,10 @@ loop_on_str:
     je equal
     mov byte r8b, [rdi + rcx]
     mov byte r9b, [rsi + rcx]
+    cmp r8b, 0
+    je diff
+    cmp r9b, 0
+    je diff
     inc rcx                     ; move to next character of the string
     cmp  r8b, r9b       ; check if current characters are equal
     je loop_on_str             ; loop if ZF = 1
